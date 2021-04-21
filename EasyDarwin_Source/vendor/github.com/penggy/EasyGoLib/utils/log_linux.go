@@ -13,7 +13,7 @@ func RedirectStderr() (err error) {
 	if err != nil {
 		return
 	}
-	err = syscall.Dup3(int(logFile.Fd()), int(os.Stderr.Fd()), 0)
+	err = syscall.Dup2(int(logFile.Fd()), int(os.Stderr.Fd()))
 	if err != nil {
 		return
 	}
